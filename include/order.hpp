@@ -6,14 +6,10 @@
 #include <ctime>
 
 using namespace std;
-// using TimePoint = chrono::time_point<chrono::high_resolution_clock>;
 enum OrderType { limit, market };
 enum Side { ask, bid };
 
 class Order {
-// private:
-    // TimePoint timestamp;
-    // TimePoint exec_timestamp;
 private:
     Side side;
     OrderType type;
