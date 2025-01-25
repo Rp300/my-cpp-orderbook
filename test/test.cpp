@@ -12,7 +12,6 @@ int main() {
     cout << "\nTesting Order object creation" << endl;
 
     // Initialize Order object
-    // "ask", "limit", 
     Order myOrder(ask, limit, 100.05, 10);
 
     // Tests
