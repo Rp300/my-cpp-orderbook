@@ -3,26 +3,42 @@
 
 #include <string>
 #include <chrono>
+#include <ctime>
 
-using TimePoint = std::chrono::time_point<std::chrono::high_resolution_clock>;
+using namespace std;
+// using TimePoint = chrono::time_point<chrono::high_resolution_clock>;
+enum OrderType { limit, market };
+enum Side { ask, bid };
 
 class Order {
+// private:
+    // TimePoint timestamp;
+    // TimePoint exec_timestamp;
 private:
-    std::string side;
-    std::string type;
+    Side side;
+    OrderType type;
     double price;
     int size;
-    TimePoint timestamp;
-    TimePoint exec_timestamp;
+    time_t timestamp;
+    time_t exec_timestamp;
+    bool filled;
 
 public:
-    Order(std::string side, std::string type, double price, int size);
+    // Constructor
+    Order(Side side, OrderType type, double price, int size);
+
     // Getters
-    std::string getSide() const { return side; }
-    std::string getType() const { return type; }
-    double getPrice() const { return price; }
-    int getSize() const { return size; }
-    TimePoint getTimestamp() const { return timestamp; }
+    Side getSide() const;
+    OrderType getType() const;
+    double getPrice() const;
+    int getSize() const;
+    time_t getTimestamp() const;
+    bool getFilled() const;
+
+    char* printTimestamp() const;
+    char* printExecTimestamp() const;
+
+    void executeOrder();
 };
 
 #endif
